@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: 45d376c8308322746865caa8fab1804a
+  m_SerializeEntries:
+  - m_GUID: 0a164bcc3dd3fb847bb2b9e96dad4d4d
+    m_Address: env_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a6e944c763e8b648a85beca0a74d47c
+    m_Address: LocalizeTextDataManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4cacbee170381424cb7a4fa1cff055e1
+    m_Address: title_ui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ca9d6f5af05a6d44a149a18435fedbc
+    m_Address: "Assets/Sounds/SE/\u30AB\u30FC\u30BD\u30EB\u79FB\u52D58.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Label-SE
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6941c355e0e72fa47985f20f65535bd3
+    m_Address: SeAudioMixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c612116c07afdef49b45ea39f30fc259
+    m_Address: SaveLoadManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce844bce296ef6a41ae62001a386d1fa
+    m_Address: env_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0e88764f6674484c9b4a5fd800b6bc3
+    m_Address: FaderManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3745577be126e346b8fe604906caefa
+    m_Address: env_11
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0bd9ed7903559764680690ea20ffee51, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f408e5cb49306b74ba6ef28f99603f2e, type: 2}
+    - {fileID: 11400000, guid: 0dce8d838db505d4b891f275b5d44c3b, type: 2}
