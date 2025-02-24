@@ -130,6 +130,7 @@ namespace curry.CsvImport
         public static void Import()
         {
             // Master
+            ImportGameSettingData();
             // Localization
             ImportLocalizationTextData();
         }

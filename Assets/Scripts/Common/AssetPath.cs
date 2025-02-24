@@ -8,12 +8,14 @@ namespace curry.Common
         // ====================
         // Manager
         // ====================
-        public const string kMasterDataManagerPrefab = "MasterDataManager.prefab";
-        public const string kLocalizationTextDataManagerPrefab = "LocalizationTextDataManager.prefab";
+        public const string kLocalizationTextDataManagerPrefab = "LocalizeTextDataManager";
+        public const string kFaderManagerPrefab = "FaderManager";
+        public const string kSaveLoadManagerPrefab = "SaveLoadManager";
 
         // ====================
         // Prefab
         // ====================
+        public const string kTitleUIPrefab = "title_ui";
 
         // ====================
         // UI
@@ -22,13 +24,13 @@ namespace curry.Common
         // ====================
         // Sound
         // ====================
-        public const string kSoundFileFormat = "{0}.ogg";
+        public const string kSoundFileFormat = "{0}";
 
         public static string GetSoundFileName(string assetName)
         {
             return string.Format(kSoundFileFormat, assetName);
         }
 
-        public const string kSEAudioMixer = "SeAudioMixer.mixer";
+        public const string kSEAudioMixer = "SeAudioMixer";
     }
 }

@@ -140,7 +140,7 @@ namespace curry.Utilities
 
         public static string GetLocalizeText(string key)
         {
-            return LocalizationTextDataManager.Instance.Get<LocalizationTextData>(key, GetCurrentLocale());
+            return LocalizeTextDataManager.Instance.Get<LocalizationTextData>(key, GetCurrentLocale());
         }
 
 #if UNITY_EDITOR

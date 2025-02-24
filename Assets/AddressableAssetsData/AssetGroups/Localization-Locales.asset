@@ -16,13 +16,13 @@ MonoBehaviour:
   m_GUID: bacc8dbf33ee8914da12e1d382ba5525
   m_SerializeEntries:
   - m_GUID: af6cfeecafb443c4eb138f460b11b964
-    m_Address: Japanese (ja)
+    m_Address: ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e4f95de23e3f74e489d91d95ca05fb24
-    m_Address: English (en)
+    m_Address: en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

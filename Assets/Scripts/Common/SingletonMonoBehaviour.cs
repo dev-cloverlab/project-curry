@@ -23,7 +23,7 @@ namespace curry.Common
 
                     if (instance == null)
                     {
-                        Debug.Log(typeof(T) + "is nothing");
+                        Debug.Log(typeof(T) + " is nothing");
                     }
                 }
 

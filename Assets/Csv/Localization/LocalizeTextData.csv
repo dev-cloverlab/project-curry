@@ -1,11 +1,12 @@
 ﻿キー,日本語テキスト,英語テキスト
+,1234567890,
 key,ja,en
-Start,スタート,Start
-,,
-,,
-,,
-,,
-,,
+TitleName,THE CURRY SIMULATOR,THE CURRY SIMULATOR
+GameStart,ゲームスタート,GAME START
+Ranking,ランキング,RANKING
+Setting,設定,SETTING
+Exit,終了,EXIT
+GameOver,ゲームオーバー,GAME OVER
 ,,
 ,,
 ,,

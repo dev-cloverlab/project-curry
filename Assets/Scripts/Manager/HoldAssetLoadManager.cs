@@ -143,6 +143,7 @@ namespace curry.Common
             {
                 var asset = Addressables.LoadAssetAsync<T>(key).WaitForCompletion();
                 m_SyncAddressableAssets[key] = asset;
+
                 return asset;
             }
             catch (Exception e)
