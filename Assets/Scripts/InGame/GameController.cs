@@ -1,4 +1,6 @@
 using curry.Common;
+using curry.Sound;
+using curry.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +11,7 @@ namespace curry.InGame
     {
         private enum State
         {
+            Init,
             TitleWait,
             ClickWait,
             Idle,
@@ -25,6 +28,15 @@ namespace curry.InGame
         [SerializeField]
         private LadleAngleController m_LadleAngleController;
 
+        [SerializeField]
+        private Transform m_LadleEntityTransform;
+
+        [SerializeField]
+        private GameObject m_FireObject;
+
+        [SerializeField]
+        private LightController m_LightController;
+
         private Vector2 m_MouseAxis = Vector2.zero;
 
         private Protector<bool> m_IsStart;
@@ -33,10 +45,19 @@ namespace curry.InGame
         private Protector<long> m_Score;
         private float m_TempTime;
 
+        private bool m_IsFirstStart = true;
+        private bool m_IsAdulation;
+
+        private const float LadleRadius = 1.0f;
+        private float m_RadiusSqr;
+
         private void Awake()
         {
             m_InGameUI.Init();
+            UnityUtility.SetActive(m_FireObject, false);
             SetState();
+
+            m_RadiusSqr = LadleRadius * LadleRadius;
         }
 
 #region SetState
@@ -94,6 +115,8 @@ namespace curry.InGame
 
         private async UniTask AfterGameOverTask()
         {
+            EnvSoundManager.Instance.Player.StopLoop(2.0f);
+            FireSoundManager.Instance.Player.StopLoop(2.0f);
             await FaderManager.Instance.FadeOut(2.0f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -145,6 +168,11 @@ namespace curry.InGame
                 m_NowGauge -= (decimal)deltaTime * GameSetting.qHpCDMzyjVtgsAHu;
             }
 
+            if (m_NowGauge < 0)
+            {
+                m_NowGauge = 0;
+            }
+
             m_InGameUI.SetGauge(m_NowGauge, GameSetting.wiyxJiGVidnUSaqY);
 
             if (m_NowGauge >= GameSetting.wiyxJiGVidnUSaqY)
@@ -169,6 +197,13 @@ namespace curry.InGame
             {
                 if (m_StateMachine.IsState((int)State.ClickWait))
                 {
+                    if (m_IsFirstStart)
+                    {
+                        OnFirstStart();
+
+                        m_IsFirstStart = false;
+                    }
+
                     m_StateMachine.NextState((int)State.Idle);
                 }
                 else if (m_StateMachine.IsState((int)State.Idle))
@@ -185,28 +220,78 @@ namespace curry.InGame
                     return;
                 }
 
-                UpdateIdle();
+                if (!m_IsAdulation)
+                {
+                    UpdateLadleMove();
+                }
+                else
+                {
+                    UpdateLadleMoveAdulation();
+                }
             }
         }
 
-        private void UpdateIdle()
+        private void UpdateLadleMove()
         {
-            m_MouseAxis.x = Input.GetAxis("Mouse X");
-            m_MouseAxis.y = Input.GetAxis("Mouse Y");
+            float x;
+            float y;
+            m_MouseAxis.x = x = Input.GetAxis("Mouse X");
+            m_MouseAxis.y = y = Input.GetAxis("Mouse Y");
 
-            var magnitude = m_MouseAxis.magnitude;
+            var moveSqr = x * x + y * y;
 
-            if (magnitude < GameSetting.AFBqBqiDtCdWeXvD)
+            if (moveSqr < GameSetting.AFBqBqiDtCdWeXvD )
             {
                 return;
             }
 
+            m_LadleAngleController.LadleRotate(Mathf.Sqrt(moveSqr));
             m_IsMove = true;
-            m_LadleAngleController.LadleRotate(magnitude);
         }
 
-        public void GameStart()
+        private void UpdateLadleMoveAdulation()
         {
+            float x;
+            float y;
+            m_MouseAxis.x = x = Input.GetAxis("Mouse X");
+            m_MouseAxis.y = y = Input.GetAxis("Mouse Y");
+
+            var moveSqr = x * x + y * y;
+
+            if (moveSqr < GameSetting.AFBqBqiDtCdWeXvD )
+            {
+                return;
+            }
+
+            var pos = m_LadleEntityTransform.localPosition;
+            pos.x += m_MouseAxis.x * GameSetting.qgUjmtKLExaPGUTJ / 10;
+            pos.z += m_MouseAxis.y * GameSetting.qgUjmtKLExaPGUTJ / 10;
+
+            // 現在位置の x, z を円の中心からの相対座標として取得
+            var offsetX = pos.x;
+            var offsetZ = pos.z;
+
+            // 半径をの二乗計算
+            var distanceSqr = offsetX * offsetX + offsetZ * offsetZ;
+
+            // 半径が制限を超えている場合のみ修正
+            if (distanceSqr > m_RadiusSqr)
+            {
+                // 角度を求める
+                float angle = Mathf.Atan2(offsetZ, offsetX);
+
+                // 半径を制限して x, z を計算
+                pos.x = Mathf.Cos(angle) * LadleRadius;
+                pos.z = Mathf.Sin(angle) * LadleRadius;
+            }
+
+            m_LadleEntityTransform.localPosition = pos;
+            m_IsMove = true;
+        }
+
+        public void GameStart(bool isAdulation = false)
+        {
+            m_IsAdulation = isAdulation;
             GameStartAsync().Forget();
         }
 
@@ -222,6 +307,13 @@ namespace curry.InGame
             Cursor.visible = enable;
             // カーソルを自由に動かせる
             Cursor.lockState = enable ? CursorLockMode.None: CursorLockMode.Confined;
+        }
+
+        private void OnFirstStart()
+        {
+            FireSoundManager.Instance.Player.PlayLoop("fire");
+            UnityUtility.SetActive(m_FireObject, true);
+            m_LightController.SetStart();
         }
     }
 }

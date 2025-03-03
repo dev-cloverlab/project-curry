@@ -1,5 +1,6 @@
 using curry.Common;
 using curry.InGame;
+using curry.Sound;
 using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
@@ -29,13 +30,24 @@ namespace curry.Title
         [SerializeField]
         private GameController m_GameController;
 
+        [SerializeField]
+        private UnityEngine.UI.Toggle m_ControlTypeToggle;
+
         private StateMachine m_StateMachine = new ();
 
         private void Awake()
         {
             UnityUtility.SetActive(m_UICanvas, true);
             SetState();
+
+#if !DEBUG_MODE
+            UnityUtility.SetActive(m_ControlTypeToggle, false);
+#else
+            UnityUtility.SetActive(m_ControlTypeToggle, true);
+            m_ControlTypeToggle.SetIsOnWithoutNotify(m_IsLadleAdulation);
+#endif
         }
+
 
 #region SetState
 
@@ -62,21 +74,26 @@ namespace curry.Title
 
         private void ToInGameProcess(StateMachineProcess _)
         {
+            SEPlayer.PlaySelectSE();
             ToInGameTask().Forget();
         }
 
         private void RankingProcess(StateMachineProcess _)
         {
+            SEPlayer.PlaySelectSE();
             DebugLogWrapper.Log($"<color=white> [[Debug]] : RankingProcess </color>");
         }
 
         private void SettingProcess(StateMachineProcess _)
         {
+            SEPlayer.PlaySelectSE();
             DebugLogWrapper.Log($"<color=white> [[Debug]] : SettingProcess </color>");
         }
 
         private void ExitProcess(StateMachineProcess _)
         {
+            SEPlayer.PlaySelectSE();
+
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -90,6 +107,8 @@ namespace curry.Title
 
         private async UniTask InitTask()
         {
+            EnvSoundManager.Instance.Player.PlayLoop("env_forest_day");
+
             m_TitleUI.GameStartAction = OnPressGameStart;
             m_TitleUI.RankingAction = OnPressRanking;
             m_TitleUI.SettingAction = OnPressSetting;
@@ -107,8 +126,11 @@ namespace curry.Title
             await m_TitleUI.FadeOut();
 
             UnityUtility.SetActive(m_TitleUI, false);
-
+#if !DEBUG_MODE
             m_GameController.GameStart();
+#else
+            m_GameController.GameStart(m_IsLadleAdulation);
+#endif
         }
 
 #endregion
@@ -156,5 +178,17 @@ namespace curry.Title
         }
 
 #endregion
+
+
+
+#if DEBUG_MODE
+        private bool m_IsLadleAdulation;
+
+        public void OnPressLadleAdulation(bool isAdulation)
+        {
+            m_IsLadleAdulation = isAdulation;
+        }
+#endif
+
     }
 }
