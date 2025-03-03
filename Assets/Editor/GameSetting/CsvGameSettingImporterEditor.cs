@@ -33,6 +33,8 @@ namespace curry.CsvImport
             var nowDt = DateTime.Now;
             var variableTabLength = 24;
 
+            List<string> logList = new();
+
             // CSVファイルをオブジェクトへ保存
             using( FileStream fs = new FileStream( importFile, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite ) )
             {
@@ -96,6 +98,7 @@ namespace curry.CsvImport
                             }
 
                             outputLine += $"Protector<{outputType}>{outputVariable.PadLeft(diffLength, ' ')} = {outputValue}{denom};";
+                            logList.Add(outputLine);
                             sw.WriteLine(outputLine);
                         }
                     }
@@ -109,6 +112,11 @@ namespace curry.CsvImport
 
             // 強制コンパイル
             CompilationPipeline.RequestScriptCompilation();
+
+            foreach (var log in logList)
+            {
+                DebugLogWrapper.Log($"<color=cyan> [[GameSetting]] : {log} </color>");
+            }
         }
     }
 }

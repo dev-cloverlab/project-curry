@@ -10,6 +10,16 @@ namespace curry.Sound
 {
     public class SEPlayer : SingletonMonoBehaviour<SEPlayer>
     {
+        public static void PlaySelectSE()
+        {
+            Play("se_1");
+        }
+
+        public static void PlayLampSwitchSE()
+        {
+            Play("se_2");
+        }
+
         private class RequestData
         { 
             public string       m_AssetName;

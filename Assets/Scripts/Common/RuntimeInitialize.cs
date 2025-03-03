@@ -29,8 +29,12 @@ namespace curry.Common
             SEPlayer.VolumeSet(10);
             SEPlayer.HoldLoadAllSE();
 
-            BgmPlayer.Init();
-            BgmPlayer.VolumeSet(10);
+            BgmManager.Create();
+            EnvSoundManager.Create();
+            FireSoundManager.Create();
+            BgmManager.Instance.Player.VolumeSet(20);
+            EnvSoundManager.Instance.Player.VolumeSet(20);
+            FireSoundManager.Instance.Player.VolumeSet(20);
 
             UserDataManager.Create();
             SaveLoadManager.Create();
@@ -43,6 +47,8 @@ namespace curry.Common
             InitializeAsync().Forget();
 
             FaderManager.Instance.FadeOutImmediate();
+
+
         }
 
         private static async UniTask InitializeAsync()

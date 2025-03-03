@@ -74,7 +74,7 @@ namespace curry.UserData
         public void Initialize()
         {
             // BGM
-            m_BGMVolume = BgmPlayer.SplitMax;
+            m_BGMVolume = BgmManager.SplitMax;
             m_SEVolume  = SEPlayer.kSplitMax;
 
             // スクリーンモード
