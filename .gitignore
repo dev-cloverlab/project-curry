@@ -79,3 +79,5 @@ crashlytics-build.properties
 # build
 build_output
 build.log
+*\Assets\AddressableAssetsData\link.xml
+*\Assets\AddressableAssetsData\link.xml.meta
