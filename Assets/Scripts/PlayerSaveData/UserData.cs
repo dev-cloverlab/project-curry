@@ -63,7 +63,7 @@ namespace curry.UserData
     public struct OptionData
     { 
         [MarshalAs(UnmanagedType.I4)]
-        public int m_BGMVolume;     // BGM音量
+        public int m_EnvVolume;     // BGM音量
         [MarshalAs(UnmanagedType.I4)]
         public int m_SEVolume;      // SE音量
         [MarshalAs(UnmanagedType.U2)]
@@ -74,7 +74,7 @@ namespace curry.UserData
         public void Initialize()
         {
             // BGM
-            m_BGMVolume = BgmManager.SplitMax;
+            m_EnvVolume = BgmManager.SplitMax;
             m_SEVolume  = SEPlayer.kSplitMax;
 
             // スクリーンモード

@@ -856,7 +856,7 @@ MonoBehaviour:
     - line: '|     PS5: DOTWEEN'
     - line: '|     QNX: DOTWEEN'
     - line: '|     ReservedCFE: DOTWEEN'
-    - line: '|     Standalone: DOTWEEN;DEBUG_MODE;UNITASK_DOTWEEN_SUPPORT'
+    - line: '|     Standalone: USE_JSONDATA;DOTWEEN;DEBUG_MODE;UNITASK_DOTWEEN_SUPPORT'
     - line: '|     VisionOS: DOTWEEN'
     - line: '|     WebGL: DOTWEEN'
     - line: '|     Windows Store Apps: DOTWEEN'

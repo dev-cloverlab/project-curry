@@ -81,24 +81,20 @@ namespace curry.Utilities
             return localeType;
         }
 
-
         public static async UniTask InitializeAsync()
         {
-            // Reset initialization state. (Unload all tables)
-            LocalizationSettings.Instance.ResetState();
-
             LocalizationLocaleType localeType = UserDataManager.Instance.Option.m_Language;
 
-            await SetLocale(localeType);
+            // Wait initialization.
+            await UniTask.WaitUntil(() => LocalizationSettings.InitializationOperation.IsDone);
+
+            SetLocale(localeType);
         }
 
-        public static async UniTask SetLocale(LocalizationLocaleType locale)
+        public static void SetLocale(LocalizationLocaleType locale)
         {
             // Set locale with locale code.
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(x => x.Identifier.Code == GetLocaleString(locale));
-
-            // Wait initialization.
-            await LocalizationSettings.InitializationOperation.Task;
         }
 
         public static LocalizationLocaleType GetCurrentLocale()

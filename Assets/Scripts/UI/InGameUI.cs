@@ -1,4 +1,5 @@
 using System;
+using Common;
 using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
@@ -6,6 +7,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace curry.InGame
 {
@@ -26,12 +28,21 @@ namespace curry.InGame
         [SerializeField]
         private TextMeshProUGUI m_ScoreText;
 
+        [SerializeField]
+        private CanvasGroup m_ScoreTextCanvasGroup;
+
+        [SerializeField]
+        private ButtonHoverDetector m_SettingButtonHoverDetector;
+
+        public UnityAction OnClickSetting { get; set; }
+
         public void Init()
         {
             m_MainUICanvasGroup.alpha = 0;
             m_GameOverCanvasGroup.alpha = 0;
             SetScore(0);
             SetActiveClickObject(false);
+            SetScoreCanvasGroupAlpha(false, -1.0f);
         }
 
         public void SetActiveClickObject(bool active)
@@ -68,6 +79,27 @@ namespace curry.InGame
             var seconds = $"{timeSpan.Seconds:00}";
 
             m_ScoreText.SetText($"{day}{hour}{minutes}{seconds}");
+        }
+
+        public async UniTask SetScoreCanvasGroupAlpha(bool active, float duration)
+        {
+            var alpha = active ? 1 : 0;
+            if (duration <= 0.0f)
+            {
+                m_ScoreTextCanvasGroup.alpha = alpha;
+                return;
+            }
+            await m_ScoreTextCanvasGroup.DOFade(alpha, duration);
+        }
+
+        public void ClickSettingAction()
+        {
+            OnClickSetting?.Invoke();
+        }
+
+        public bool IsSettingButtonHover()
+        {
+            return m_SettingButtonHoverDetector.IsMouseOver();
         }
     }
 }

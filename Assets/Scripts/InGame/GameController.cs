@@ -1,8 +1,10 @@
 using curry.Common;
 using curry.Sound;
+using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace curry.InGame
@@ -18,6 +20,7 @@ namespace curry.InGame
             GameOverFade,
             GameOver,
             AfterGameOver,
+            Setting,
         }
 
         private StateMachine m_StateMachine = new ();
@@ -37,6 +40,12 @@ namespace curry.InGame
         [SerializeField]
         private LightController m_LightController;
 
+        [SerializeField]
+        private Rigidbody m_LadleRigidBody;
+
+        [SerializeField]
+        private SettingUI m_SettingUI;
+
         private Vector2 m_MouseAxis = Vector2.zero;
 
         private Protector<bool> m_IsStart;
@@ -46,14 +55,23 @@ namespace curry.InGame
         private float m_TempTime;
 
         private bool m_IsFirstStart = true;
-        private bool m_IsAdulation;
 
-        private const float LadleRadius = 1.0f;
+        private const float LadleRadius = 1.1f;
         private float m_RadiusSqr;
+        private bool m_IsFirstSetting = true;
 
         private void Awake()
         {
             m_InGameUI.Init();
+            m_InGameUI.OnClickSetting = () =>
+            {
+                if (!m_StateMachine.IsState((int)State.ClickWait))
+                {
+                    return;
+                }
+
+                m_StateMachine.NextState((int)State.Setting);
+            };
             UnityUtility.SetActive(m_FireObject, false);
             SetState();
 
@@ -70,6 +88,7 @@ namespace curry.InGame
             m_StateMachine.AddState((int)State.GameOverFade, GameOverFadeProcess);
             m_StateMachine.AddState((int)State.GameOver, null);
             m_StateMachine.AddState((int)State.AfterGameOver, AfterGameOverProcess);
+            m_StateMachine.AddState((int)State.Setting, SettingProcess);
 
             m_StateMachine.NextState((int)State.TitleWait);
         }
@@ -94,6 +113,8 @@ namespace curry.InGame
 
         private void GameOverFadeProcess(StateMachineProcess _)
         {
+            if(m_SettingUI.IsActivate)
+                m_SettingUI.Close();
             EnableCursor(true);
             GameOverFadeTask().Forget();
         }
@@ -103,6 +124,12 @@ namespace curry.InGame
             AfterGameOverTask().Forget();
         }
 
+        private void SettingProcess(StateMachineProcess _)
+        {
+            SEPlayer.PlaySelectSE();
+            SettingTask().Forget();
+        }
+
 #endregion
 
 #region Tasks
@@ -110,6 +137,7 @@ namespace curry.InGame
         private async UniTask GameOverFadeTask()
         {
             await m_InGameUI.FadeInGameOver();
+            await m_InGameUI.SetScoreCanvasGroupAlpha(true, 1.0f);
             m_StateMachine.NextState((int)State.GameOver);
         }
 
@@ -119,6 +147,33 @@ namespace curry.InGame
             FireSoundManager.Instance.Player.StopLoop(2.0f);
             await FaderManager.Instance.FadeOut(2.0f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        private async UniTask SettingTask()
+        {
+            UnityUtility.SetActive(m_SettingUI, true);
+
+            if (m_IsFirstSetting)
+            {
+                m_SettingUI.OpenedEvent.AddListener(() =>
+                {
+                    m_SettingUI.Activate(true);
+                });
+
+                m_SettingUI.ClosedEvent.AddListener(() =>
+                {
+                    UnityUtility.SetActive(m_SettingUI, false);
+
+                    if (m_StateMachine.IsState((int)State.Setting))
+                    {
+                        m_StateMachine.NextState((int)State.ClickWait);
+                    }
+                });
+                m_IsFirstSetting = false;
+            }
+
+            m_SettingUI.Setup();
+            m_SettingUI.OpenAnimation();
         }
 
 #endregion
@@ -197,6 +252,12 @@ namespace curry.InGame
             {
                 if (m_StateMachine.IsState((int)State.ClickWait))
                 {
+                    // 設定ボタンの上にカーソルがある場合はクリック待機が続く
+                    if (m_InGameUI.IsSettingButtonHover())
+                    {
+                        return;
+                    }
+
                     if (m_IsFirstStart)
                     {
                         OnFirstStart();
@@ -220,35 +281,30 @@ namespace curry.InGame
                     return;
                 }
 
-                if (!m_IsAdulation)
-                {
-                    UpdateLadleMove();
-                }
-                else
-                {
-                    UpdateLadleMoveAdulation();
-                }
+                UpdateLadleMoveAdulation();
             }
         }
 
-        private void UpdateLadleMove()
-        {
-            float x;
-            float y;
-            m_MouseAxis.x = x = Input.GetAxis("Mouse X");
-            m_MouseAxis.y = y = Input.GetAxis("Mouse Y");
+        // マウスが動いていたら、おたまは追従せずに回転する
+        // private void UpdateLadleMove()
+        // {
+        //     float x;
+        //     float y;
+        //     m_MouseAxis.x = x = Input.GetAxis("Mouse X");
+        //     m_MouseAxis.y = y = Input.GetAxis("Mouse Y");
+        //
+        //     var moveSqr = x * x + y * y;
+        //
+        //     if (moveSqr < GameSetting.AFBqBqiDtCdWeXvD )
+        //     {
+        //         return;
+        //     }
+        //
+        //     m_LadleAngleController.LadleRotate(Mathf.Sqrt(moveSqr));
+        //     m_IsMove = true;
+        // }
 
-            var moveSqr = x * x + y * y;
-
-            if (moveSqr < GameSetting.AFBqBqiDtCdWeXvD )
-            {
-                return;
-            }
-
-            m_LadleAngleController.LadleRotate(Mathf.Sqrt(moveSqr));
-            m_IsMove = true;
-        }
-
+        // マウスが動いたらその動きに追従して動く
         private void UpdateLadleMoveAdulation()
         {
             float x;
@@ -263,7 +319,7 @@ namespace curry.InGame
                 return;
             }
 
-            var pos = m_LadleEntityTransform.localPosition;
+            var pos = m_LadleRigidBody.position;
             pos.x += m_MouseAxis.x * GameSetting.qgUjmtKLExaPGUTJ / 10;
             pos.z += m_MouseAxis.y * GameSetting.qgUjmtKLExaPGUTJ / 10;
 
@@ -285,13 +341,12 @@ namespace curry.InGame
                 pos.z = Mathf.Sin(angle) * LadleRadius;
             }
 
-            m_LadleEntityTransform.localPosition = pos;
+            m_LadleRigidBody.MovePosition(pos);
             m_IsMove = true;
         }
 
-        public void GameStart(bool isAdulation = false)
+        public void GameStart()
         {
-            m_IsAdulation = isAdulation;
             GameStartAsync().Forget();
         }
 
