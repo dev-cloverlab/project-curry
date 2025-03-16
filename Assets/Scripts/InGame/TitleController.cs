@@ -28,24 +28,19 @@ namespace curry.Title
         [SerializeField]
         private TitleUI m_TitleUI;
         [SerializeField]
+        private SettingUI m_SettingUI;
+        [SerializeField]
         private GameController m_GameController;
 
-        [SerializeField]
-        private UnityEngine.UI.Toggle m_ControlTypeToggle;
-
         private StateMachine m_StateMachine = new ();
+
+        private bool m_IsFirstSetting = true;
 
         private void Awake()
         {
             UnityUtility.SetActive(m_UICanvas, true);
+            UnityUtility.SetActive(m_SettingUI, false);
             SetState();
-
-#if !DEBUG_MODE
-            UnityUtility.SetActive(m_ControlTypeToggle, false);
-#else
-            UnityUtility.SetActive(m_ControlTypeToggle, true);
-            m_ControlTypeToggle.SetIsOnWithoutNotify(m_IsLadleAdulation);
-#endif
         }
 
 
@@ -87,7 +82,7 @@ namespace curry.Title
         private void SettingProcess(StateMachineProcess _)
         {
             SEPlayer.PlaySelectSE();
-            DebugLogWrapper.Log($"<color=white> [[Debug]] : SettingProcess </color>");
+            SettingTask().Forget();
         }
 
         private void ExitProcess(StateMachineProcess _)
@@ -126,11 +121,30 @@ namespace curry.Title
             await m_TitleUI.FadeOut();
 
             UnityUtility.SetActive(m_TitleUI, false);
-#if !DEBUG_MODE
             m_GameController.GameStart();
-#else
-            m_GameController.GameStart(m_IsLadleAdulation);
-#endif
+        }
+
+        private async UniTask SettingTask()
+        {
+            UnityUtility.SetActive(m_SettingUI, true);
+
+            if (m_IsFirstSetting)
+            {
+                m_SettingUI.OpenedEvent.AddListener(() =>
+                {
+                    m_SettingUI.Activate(true);
+                });
+
+                m_SettingUI.ClosedEvent.AddListener(() =>
+                {
+                    UnityUtility.SetActive(m_SettingUI, false);
+                    m_StateMachine.NextState((int)State.Title);
+                });
+                m_IsFirstSetting = false;
+            }
+
+            m_SettingUI.Setup();
+            m_SettingUI.OpenAnimation();
         }
 
 #endregion
@@ -178,17 +192,5 @@ namespace curry.Title
         }
 
 #endregion
-
-
-
-#if DEBUG_MODE
-        private bool m_IsLadleAdulation;
-
-        public void OnPressLadleAdulation(bool isAdulation)
-        {
-            m_IsLadleAdulation = isAdulation;
-        }
-#endif
-
     }
 }

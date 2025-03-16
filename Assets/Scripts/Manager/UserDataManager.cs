@@ -39,9 +39,9 @@ namespace curry.Common
             m_playData.m_UserData.InitializeArray();
 
             // 音量の反映
-            BgmManager.Instance.Player.VolumeSet(m_playData.m_Option.m_BGMVolume);
-            EnvSoundManager.Instance.Player.VolumeSet(m_playData.m_Option.m_BGMVolume);
-            FireSoundManager.Instance.Player.VolumeSet(m_playData.m_Option.m_BGMVolume);
+            BgmManager.Instance.Player.VolumeSet(m_playData.m_Option.m_EnvVolume);
+            EnvSoundManager.Instance.Player.VolumeSet(m_playData.m_Option.m_EnvVolume);
+            FireSoundManager.Instance.Player.VolumeSet(m_playData.m_Option.m_EnvVolume);
             SEPlayer.VolumeSet(m_playData.m_Option.m_SEVolume);
 
             // ウィンドウ設定

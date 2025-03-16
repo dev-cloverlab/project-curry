@@ -1,3 +1,4 @@
+using curry.Localization;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using curry.Utilities;
@@ -61,6 +62,8 @@ namespace curry.Common
             DebugLogWrapper.Log($"<color=white> Locale {locale} </color>");
 
 #endif
+            // 指定の言語に合わせる
+            LocalizationTextManager.ChangeText();
             IsSetup = true;
         }
     }

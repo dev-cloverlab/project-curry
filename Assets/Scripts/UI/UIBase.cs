@@ -62,7 +62,7 @@ namespace curry.UI
 
         public void CloseAnimation()
         {
-            m_UIAnimator.Play(kCloseAnimationNameHash);
+            m_UIAnimator.SetTrigger("Close");
         }
 
         public void CloseImmediate(bool invokeEvent = true)
