@@ -228,6 +228,8 @@ namespace curry.InGame
                 m_NowGauge = 0;
             }
 
+            m_NowGauge = 0;
+
             m_InGameUI.SetGauge(m_NowGauge, GameSetting.wiyxJiGVidnUSaqY);
 
             if (m_NowGauge >= GameSetting.wiyxJiGVidnUSaqY)
