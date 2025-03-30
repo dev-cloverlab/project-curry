@@ -3096,10 +3096,10 @@ MonoBehaviour:
   - {fileID: 1313578172}
   pressure: 1
   viscosity: 0.8
-  turbulence: 2
+  turbulence: 0.3
   adhesion: 0
   surfaceTension: 0
-  buoyancy: 0
+  buoyancy: 50
   dissipation: {x: 0.01, y: 0.01, z: 0.01, w: 0.01}
   m_Solver: {fileID: 1569256111}
 --- !u!23 &1202551573
@@ -3170,7 +3170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1236243843
 Transform:
   m_ObjectHideFlags: 0
@@ -3914,15 +3914,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storage: {fileID: 11400000, guid: 481ef9a7a51bc4492ab6a0128fa4fb28, type: 2}
-  desiredResolution: 512
+  desiredResolution: 256
   densitySupersampling: 1
   disposeWhenCulled: 0
   readable: 0
   simulationMaterial: {fileID: 2100000, guid: 6dfe24573234e413ab0d0b5093141a3c, type: 2}
   maxTimestep: 0.4
   maxSteps: 128
-  pressureSolver: 0
-  pressureIterations: 3
+  pressureSolver: 1
+  pressureIterations: 32
 --- !u!1 &1614224313
 GameObject:
   m_ObjectHideFlags: 0
