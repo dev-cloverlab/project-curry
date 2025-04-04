@@ -3096,7 +3096,7 @@ MonoBehaviour:
   - {fileID: 1313578172}
   pressure: 1
   viscosity: 0.8
-  turbulence: 0.3
+  turbulence: 2
   adhesion: 0
   surfaceTension: 0
   buoyancy: 50
