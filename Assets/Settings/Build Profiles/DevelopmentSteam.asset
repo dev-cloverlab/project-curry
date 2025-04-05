@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Production
+  m_Name: DevelopmentSteam
   m_EditorClassIdentifier: 
   m_AssetVersion: 1
   m_BuildTarget: 19
@@ -36,7 +36,7 @@ MonoBehaviour:
     - line: '|   targetDevice: 2'
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
-    - line: '|   companyName: DefaultCompany'
+    - line: '|   companyName: cloverlab'
     - line: '|   productName: proj_curry'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
@@ -67,8 +67,8 @@ MonoBehaviour:
     - line: '|   m_SplashScreenLogos: []'
     - line: '|   m_VirtualRealitySplashScreen: {instanceID: 0}'
     - line: '|   m_HolographicTrackingLossScreen: {instanceID: 0}'
-    - line: '|   defaultScreenWidth: 1024'
-    - line: '|   defaultScreenHeight: 768'
+    - line: '|   defaultScreenWidth: 1280'
+    - line: '|   defaultScreenHeight: 720'
     - line: '|   defaultScreenWidthWeb: 960'
     - line: '|   defaultScreenHeightWeb: 600'
     - line: '|   m_StereoRenderingPath: 0'
@@ -166,7 +166,11 @@ MonoBehaviour:
     - line: '|   visionOSBundleVersion: 1.0'
     - line: '|   tvOSBundleVersion: 1.0'
     - line: '|   bundleVersion: 0.1.0'
-    - line: '|   preloadedAssets: []'
+    - line: '|   preloadedAssets:'
+    - line: '|   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b,
+        type: 3}'
+    - line: '|   - {fileID: 11400000, guid: 25a6d22a5ecb4a24abdd2462880b2b7d, type:
+        2}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   m_HolographicPauseOnTrackingLoss: 1'
@@ -852,7 +856,7 @@ MonoBehaviour:
     - line: '|     PS5: DOTWEEN'
     - line: '|     QNX: DOTWEEN'
     - line: '|     ReservedCFE: DOTWEEN'
-    - line: '|     Standalone: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;USE_JSONDATA;UNITY_STEAM'
+    - line: '|     Standalone: USE_JSONDATA;DOTWEEN;DEBUG_MODE;UNITASK_DOTWEEN_SUPPORT;UNITY_STEAM'
     - line: '|     VisionOS: DOTWEEN'
     - line: '|     WebGL: DOTWEEN'
     - line: '|     Windows Store Apps: DOTWEEN'
@@ -979,8 +983,8 @@ MonoBehaviour:
     - rid: 1830359710037966926
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
-        m_Development: 0
-        m_ConnectProfiler: 0
+        m_Development: 1
+        m_ConnectProfiler: 1
         m_BuildWithDeepProfilingSupport: 0
         m_AllowDebugging: 0
         m_WaitForManagedDebugger: 0
