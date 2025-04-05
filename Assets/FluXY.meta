@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FluXY.meta
 guid: 342534023b00f31478ee242b25cfa747
 folderAsset: yes
 DefaultImporter:
+========
+guid: f23c4f821952c184fa3ad2e4ac6cb65b
+TextScriptImporter:
+>>>>>>>> main_no_fluid:Assets/com.rlabrecque.steamworks.net/LICENSE.md.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
