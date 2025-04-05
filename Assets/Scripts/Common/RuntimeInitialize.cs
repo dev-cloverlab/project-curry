@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using curry.Utilities;
 using curry.Sound;
+using Steamworks;
 
 namespace curry.Common
 {
@@ -62,6 +63,20 @@ namespace curry.Common
             DebugLogWrapper.Log($"<color=white> Locale {locale} </color>");
 
 #endif
+            // SteamManager初期化
+            await SteamController.SteamInit();
+            var initializedLeaderboards = false;
+
+            // リーダーボード初期化
+            SteamController.InitializeLeaderboards(SteamController.kLeaderboardScoreRankingName, onSuccess: () =>
+            {
+                initializedLeaderboards = true;
+            });
+
+            await UniTask.WaitWhile(() => !initializedLeaderboards);
+
+            SteamController.UploadLeaderboard(SteamController.kLeaderboardScoreRankingName, 100);
+
             // 指定の言語に合わせる
             LocalizationTextManager.ChangeText();
             IsSetup = true;
