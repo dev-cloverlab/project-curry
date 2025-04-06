@@ -49,3 +49,12 @@ MonoBehaviour:
   - key: LanguageEnglish
     ja: English(En)
     en: English(En)
+  - key: Global
+    ja: "\u30C8\u30C3\u30D7"
+    en: Global
+  - key: AroundUser
+    ja: "\u5468\u8FBA"
+    en: AroundUser
+  - key: Friends
+    ja: "\u30D5\u30EC\u30F3\u30C9"
+    en: Friends

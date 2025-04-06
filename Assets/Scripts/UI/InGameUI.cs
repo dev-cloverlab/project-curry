@@ -67,18 +67,7 @@ namespace curry.InGame
 
         public void SetScore(long score)
         {
-            var timeSpan = TimeSpan.FromSeconds(score);
-
-            var daySuffix = timeSpan.Days > 1 ? "days" : "day";
-            var day = timeSpan.Days > 0 ? $"{timeSpan.Days}{daySuffix} " : string.Empty;
-
-            var hour = $"{timeSpan.Hours:00}:";
-
-            var minutes = $"{timeSpan.Minutes:00}:";
-
-            var seconds = $"{timeSpan.Seconds:00}";
-
-            m_ScoreText.SetText($"{day}{hour}{minutes}{seconds}");
+            m_ScoreText.SetText($"{CurryUtility.GetScoreText(score)}");
         }
 
         public async UniTask SetScoreCanvasGroupAlpha(bool active, float duration)

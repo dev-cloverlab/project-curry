@@ -1,5 +1,6 @@
 using System;
 using curry.Common;
+using curry.Ranking;
 using curry.Sound;
 using curry.UI;
 using curry.Utilities;
@@ -52,7 +53,7 @@ namespace curry.InGame
         private Protector<bool> m_IsStart;
         private Protector<bool> m_IsMove;
         private Protector<decimal> m_NowGauge;
-        private Protector<long> m_Score;
+        private Protector<int> m_Score;
         private float m_TempTime;
 
         private bool m_IsFirstStart = true;
@@ -150,6 +151,7 @@ namespace curry.InGame
             EnvSoundManager.Instance.Player.StopLoop(2.0f);
             FireSoundManager.Instance.Player.StopLoop(2.0f);
             await FaderManager.Instance.FadeOut(2.0f);
+            await CurryLeaderBoardManager.Instance.UploadScore(m_Score);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
