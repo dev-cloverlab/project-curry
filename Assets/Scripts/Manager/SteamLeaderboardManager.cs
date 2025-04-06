@@ -84,9 +84,9 @@ namespace curry.Ranking
 
                 var (globalResults, aroundResults, friendResults) = await UniTask.WhenAll(globalTask, aroundTask, friendTask);
 
-                m_GlobalDataList = globalResults;
-                m_GlobalAroundUserDataList = aroundResults;
-                m_FriendDataList = friendResults;
+                m_GlobalDataList = globalResults.OrderBy(x => x.Rank).ToList();
+                m_GlobalAroundUserDataList = aroundResults.OrderBy(x => x.Rank).ToList();
+                m_FriendDataList = friendResults.OrderBy(x => x.Rank).ToList();
 
                 m_MyData = FindMyData(m_GlobalAroundUserDataList);
             }
