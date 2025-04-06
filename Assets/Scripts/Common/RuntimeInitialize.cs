@@ -1,4 +1,5 @@
 using curry.Localization;
+using curry.Ranking;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using curry.Utilities;
@@ -49,8 +50,6 @@ namespace curry.Common
             InitializeAsync().Forget();
 
             FaderManager.Instance.FadeOutImmediate();
-
-
         }
 
         private static async UniTask InitializeAsync()
@@ -63,19 +62,9 @@ namespace curry.Common
             DebugLogWrapper.Log($"<color=white> Locale {locale} </color>");
 
 #endif
+            CurryLeaderBoardManager.Create();
             // SteamManager初期化
-            await SteamController.SteamInit();
-            var initializedLeaderboards = false;
-
-            // リーダーボード初期化
-            SteamController.InitializeLeaderboards(SteamController.kLeaderboardScoreRankingName, onSuccess: () =>
-            {
-                initializedLeaderboards = true;
-            });
-
-            await UniTask.WaitWhile(() => !initializedLeaderboards);
-
-            SteamController.UploadLeaderboard(SteamController.kLeaderboardScoreRankingName, 100);
+            await CurryLeaderBoardManager.Instance.Init();
 
             // 指定の言語に合わせる
             LocalizationTextManager.ChangeText();

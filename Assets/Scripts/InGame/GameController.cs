@@ -1,3 +1,4 @@
+using System;
 using curry.Common;
 using curry.Sound;
 using curry.UI;
@@ -62,6 +63,9 @@ namespace curry.InGame
 
         private void Awake()
         {
+            Resources.UnloadUnusedAssets();
+            GC.Collect();
+
             m_InGameUI.Init();
             m_InGameUI.OnClickSetting = () =>
             {
