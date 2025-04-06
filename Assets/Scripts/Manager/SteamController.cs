@@ -8,6 +8,13 @@ using System.Diagnostics;
 using Cysharp.Threading.Tasks;
 using Debug = UnityEngine.Debug;
 
+
+/*
+ * SteamApi操作用クラス
+ * 呼び出し側がSTEAMWORKS名前空間の有無を意識せずに使えるようにしています
+ * STEAMWORKS名前空間がDefineSymbolに定義されていない場合、どの関数も成功扱いですぐに処理をすぐ終わらせます
+ * その際ランキング等は空のデータを返します
+ */
 public static class SteamController
 {
     /// <summary>
