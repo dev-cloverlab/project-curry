@@ -36,7 +36,7 @@ namespace curry.leaderboard
 
             #if DEBUG_MODE
 
-            if (true)
+            if (false)
             {
                 var first = globalDataList.FirstOrDefault();
                 first.SetRank(10);
