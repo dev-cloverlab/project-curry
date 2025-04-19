@@ -75,21 +75,26 @@ namespace curry.InGame
 
             var afterDiff = m_Angle % 360;
 
-            if (beforeDiff < 20 && afterDiff >= 20)
+            if (beforeDiff < 30 && afterDiff >= 30)
             {
                 if (m_IsFirstBird)
                 {
-                    m_BirdsController.Play();
-                    m_IsFirstBird = false;
+                    PlayBird();
                 }
                 else
                 {
                     if (Random.Range(0, 3) == 0)
                     {
-                        m_BirdsController.Play();
+                        PlayBird();
                     }
                 }
             }
+
+            PlayBirdRandom(beforeDiff, afterDiff, 5);
+            PlayBirdRandom(beforeDiff, afterDiff, 10);
+            PlayBirdRandom(beforeDiff, afterDiff, 15);
+            PlayBirdRandom(beforeDiff, afterDiff, 20);
+            PlayBirdRandom(beforeDiff, afterDiff, 25);
 
             if (m_Angle >= 90 && m_Angle <= 270)
             {
@@ -226,6 +231,26 @@ namespace curry.InGame
             {
                 SEPlayer.PlayLampSwitchSE();
                 UnityUtility.SetActive(m_LampLightObj, !m_LampLightObj.activeSelf);
+            }
+        }
+
+        private void PlayBird()
+        {
+            m_BirdsController.Play();
+            m_IsFirstBird = false;
+        }
+
+        private void PlayBirdRandom(float beforeDiff, float afterDiff, float diff)
+        {
+            if (beforeDiff < diff2 && afterDiff >= diff2)
+            {
+                if (!m_IsFirstBird)
+                {
+                    if (Random.Range(0, 3) == 0)
+                    {
+                        PlayBird();
+                    }
+                }
             }
         }
     }
