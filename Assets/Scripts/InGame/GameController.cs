@@ -6,7 +6,6 @@ using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace curry.InGame
@@ -48,6 +47,18 @@ namespace curry.InGame
         [SerializeField]
         private SettingUI m_SettingUI;
 
+        [SerializeField]
+        private MeshRenderer m_MeshRenderer;
+
+        [SerializeField]
+        private GameObject m_Steam;
+
+        [SerializeField]
+        private ParticleSystem m_SteamParticle;
+
+        [SerializeField]
+        private GameObject m_KogeSteam;
+
         private Vector2 m_MouseAxis = Vector2.zero;
 
         private Protector<bool> m_IsStart;
@@ -61,11 +72,19 @@ namespace curry.InGame
         private const float LadleRadius = 1.1f;
         private float m_RadiusSqr;
         private bool m_IsFirstSetting = true;
+        private static readonly int kAlbedoTintID = Shader.PropertyToID("Color_3D2DB61D");
+        private Material m_CurryMat;
+        private Color m_CurryColor = new (1.0f, 1.0f, 1.0f, 1.0f);
+        private ParticleSystem.MainModule m_SteamParticleMain;
 
         private void Awake()
         {
             Resources.UnloadUnusedAssets();
             GC.Collect();
+            m_CurryMat = m_MeshRenderer.materials[0];
+            UnityUtility.SetActive(m_Steam, false);
+            UnityUtility.SetActive(m_KogeSteam, false);
+            m_SteamParticleMain = m_SteamParticle.main;
 
             m_InGameUI.Init();
             m_InGameUI.OnClickSetting = () =>
@@ -81,6 +100,15 @@ namespace curry.InGame
             SetState();
 
             m_RadiusSqr = LadleRadius * LadleRadius;
+        }
+
+        private void OnDestroy()
+        {
+            if (m_CurryMat != null)
+            {
+                Destroy(m_CurryMat);
+                m_CurryMat = null;
+            }
         }
 
 #region SetState
@@ -233,6 +261,41 @@ namespace curry.InGame
             {
                 m_NowGauge = 0;
             }
+
+            var ratio = (float)(m_NowGauge / GameSetting.wiyxJiGVidnUSaqY);
+
+            float colorVal;
+
+            if (ratio <= 0.5f)
+            {
+                colorVal = 1.0f;
+            }
+            else
+            {
+                colorVal = (1.0f - ratio) * 2;
+            }
+
+            colorVal = Mathf.Clamp(colorVal, 0f, 1f);
+
+            var isActiveSteam = ratio > 0.5f && ratio < 0.9f;
+
+            UnityUtility.SetActive(m_Steam, isActiveSteam);
+
+            if (isActiveSteam)
+            {
+                var countBase = (ratio-0.49f) * 10;
+                var maxParticles = Mathf.RoundToInt(countBase * countBase * 10);
+                DebugLogWrapper.Log($"<color=white> [[Debug]] : maxParticles {maxParticles} </color>");
+                m_SteamParticleMain.maxParticles = maxParticles;
+            }
+
+            UnityUtility.SetActive(m_KogeSteam, ratio >= 0.9f);
+
+            m_CurryColor.r = colorVal;
+            m_CurryColor.g = colorVal;
+            m_CurryColor.b = colorVal;
+
+            m_CurryMat.SetColor(kAlbedoTintID, m_CurryColor);
 
             m_InGameUI.SetGauge(m_NowGauge, GameSetting.wiyxJiGVidnUSaqY);
 

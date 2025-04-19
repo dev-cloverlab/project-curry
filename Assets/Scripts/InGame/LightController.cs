@@ -16,6 +16,9 @@ namespace curry.InGame
         [SerializeField]
         private GameObject m_LampLightObj;
 
+        [SerializeField]
+        private InGameBirdsController m_BirdsController;
+
         private bool m_IsStart;
         private float m_Timer;
         private const float kMaxRoatationAngle = 360.0f;
@@ -26,6 +29,8 @@ namespace curry.InGame
         private float m_BeforeAngle;
         private const float kShadowStrengthMax = 0.8f;
         private const float kShadowStrengthMin = 0f;
+        private float m_Angle;
+        private bool m_IsFirstBird = true;
 
         private void Awake()
         {
@@ -63,10 +68,30 @@ namespace curry.InGame
             var totalDuration = GameSetting.XdYpLzQaWmNbVoTc; // 3分
             var ratio = m_Timer / totalDuration;
 
-            var rotation = m_LightParentTransform.eulerAngles;
-            var angle = m_BeforeAngle = rotation.z = kMaxRoatationAngle * ratio;
+            var beforeDiff = m_BeforeAngle % 360;
 
-            if (angle >= 90 && angle <= 260)
+            var rotation = m_LightParentTransform.eulerAngles;
+            m_Angle = m_BeforeAngle = rotation.z = kMaxRoatationAngle * ratio;
+
+            var afterDiff = m_Angle % 360;
+
+            if (beforeDiff < 20 && afterDiff >= 20)
+            {
+                if (m_IsFirstBird)
+                {
+                    m_BirdsController.Play();
+                    m_IsFirstBird = false;
+                }
+                else
+                {
+                    if (Random.Range(0, 3) == 0)
+                    {
+                        m_BirdsController.Play();
+                    }
+                }
+            }
+
+            if (m_Angle >= 90 && m_Angle <= 270)
             {
                 if (EnvSoundManager.Instance.Player.LoopName == "env_forest_day")
                 {
@@ -83,9 +108,9 @@ namespace curry.InGame
 
             m_LightParentTransform.eulerAngles = rotation;
 
-            UpdateIntensity(angle);
-            UpdateLightColor(angle);
-            UpdateShadowStrength(angle);
+            UpdateIntensity(m_Angle);
+            UpdateLightColor(m_Angle);
+            UpdateShadowStrength(m_Angle);
             UpdateLampLight();
 
             if (m_Timer > GameSetting.XdYpLzQaWmNbVoTc)
