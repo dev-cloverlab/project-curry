@@ -5,6 +5,8 @@ using curry.Sound;
 using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
+using Fluxy;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,6 +61,9 @@ namespace curry.InGame
         [SerializeField]
         private GameObject m_KogeSteam;
 
+        [SerializeField]
+        private FluxyTarget[] m_Bubbles;
+
         private Vector2 m_MouseAxis = Vector2.zero;
 
         private Protector<bool> m_IsStart;
@@ -76,6 +81,10 @@ namespace curry.InGame
         private Material m_CurryMat;
         private Color m_CurryColor = new (1.0f, 1.0f, 1.0f, 1.0f);
         private ParticleSystem.MainModule m_SteamParticleMain;
+
+        private const float kBubbleForceNone = 0f;
+        private const float kBubbleForceMin = 0.1f;
+        private const float kBubbleForceMax = 1.0f;
 
         private void Awake()
         {
@@ -96,6 +105,7 @@ namespace curry.InGame
 
                 m_StateMachine.NextState((int)State.Setting);
             };
+            SetBubbleForce(kBubbleForceNone);
             UnityUtility.SetActive(m_FireObject, false);
             SetState();
 
@@ -246,6 +256,8 @@ namespace curry.InGame
             m_IsMove = false;
         }
 
+        private float m_ColorValMin = 1.0f;
+
         private void UpdateGameOverGauge(float deltaTime)
         {
             if (!m_IsMove)
@@ -269,13 +281,25 @@ namespace curry.InGame
             if (ratio <= 0.5f)
             {
                 colorVal = 1.0f;
+                SetBubbleForce(kBubbleForceMin);
             }
             else
             {
                 colorVal = (1.0f - ratio) * 2;
+                var bubbleForce = kBubbleForceMin + (ratio - 0.5f) * (kBubbleForceMax - kBubbleForceMin) / 0.5f;
+                SetBubbleForce(bubbleForce);
             }
 
             colorVal = Mathf.Clamp(colorVal, 0f, 1f);
+
+            if (colorVal <= m_ColorValMin)
+            {
+                m_ColorValMin = colorVal;
+            }
+            else
+            {
+                colorVal = m_ColorValMin;
+            }
 
             var isActiveSteam = ratio > 0.5f && ratio < 0.9f;
 
@@ -285,7 +309,6 @@ namespace curry.InGame
             {
                 var countBase = (ratio-0.49f) * 10;
                 var maxParticles = Mathf.RoundToInt(countBase * countBase * 10);
-                DebugLogWrapper.Log($"<color=white> [[Debug]] : maxParticles {maxParticles} </color>");
                 m_SteamParticleMain.maxParticles = maxParticles;
             }
 
@@ -437,7 +460,18 @@ namespace curry.InGame
         {
             FireSoundManager.Instance.Player.PlayLoop("fire");
             UnityUtility.SetActive(m_FireObject, true);
+            SetBubbleForce(kBubbleForceMin);
             m_LightController.SetStart();
+        }
+
+        private void SetBubbleForce(float force)
+        {
+            DebugLogWrapper.Log($"<color=white> [[Debug]] : force {force} </color>");
+
+            foreach (var bubble in m_Bubbles)
+            {
+                bubble.force.x = force;
+            }
         }
     }
 }
