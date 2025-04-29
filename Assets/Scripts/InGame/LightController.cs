@@ -242,7 +242,7 @@ namespace curry.InGame
 
         private void PlayBirdRandom(float beforeDiff, float afterDiff, float diff)
         {
-            if (beforeDiff < diff2 && afterDiff >= diff2)
+            if (beforeDiff < diff && afterDiff >= diff)
             {
                 if (!m_IsFirstBird)
                 {
