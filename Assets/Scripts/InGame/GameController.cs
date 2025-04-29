@@ -9,6 +9,8 @@ using Fluxy;
 using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 namespace curry.InGame
 {
@@ -84,7 +86,7 @@ namespace curry.InGame
 
         private const float kBubbleForceNone = 0f;
         private const float kBubbleForceMin = 0.1f;
-        private const float kBubbleForceMax = 1.0f;
+        private const float kBubbleForceMax = 1.2f;
 
         private void Awake()
         {
@@ -281,14 +283,14 @@ namespace curry.InGame
             if (ratio <= 0.5f)
             {
                 colorVal = 1.0f;
-                SetBubbleForce(kBubbleForceMin);
             }
             else
             {
                 colorVal = (1.0f - ratio) * 2;
-                var bubbleForce = kBubbleForceMin + (ratio - 0.5f) * (kBubbleForceMax - kBubbleForceMin) / 0.5f;
-                SetBubbleForce(bubbleForce);
             }
+
+            var bubbleForce = kBubbleForceMin + ratio * (kBubbleForceMax - kBubbleForceMin);
+            SetBubbleForce(bubbleForce);
 
             colorVal = Mathf.Clamp(colorVal, 0f, 1f);
 
@@ -466,11 +468,28 @@ namespace curry.InGame
 
         private void SetBubbleForce(float force)
         {
-            DebugLogWrapper.Log($"<color=white> [[Debug]] : force {force} </color>");
+            float scale;
+
+            if (force <= 0.6f)
+            {
+                scale = 0.3f;
+            }
+            else if (force <= 1.2f)
+            {
+                // 線形補間: force値0.6fから1.2fの範囲をscale 0.3fから0.7fに対応させる
+                scale = 0.3f + (force - 0.6f) * (0.7f - 0.3f) / (1.2f - 0.6f);
+            }
+            else
+            {
+                // 範囲外の値は最大値に制限する
+                scale = 0.7f;
+            }
 
             foreach (var bubble in m_Bubbles)
             {
                 bubble.force.x = force;
+                bubble.scale.x = scale;
+                bubble.scale.y = scale;
             }
         }
     }

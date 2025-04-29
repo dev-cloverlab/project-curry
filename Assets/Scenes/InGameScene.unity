@@ -3946,8 +3946,8 @@ MonoBehaviour:
   rotationRandomness: 1
   scaleWithDistance: 1
   scaleWithTransform: 0
-  scale: {x: 0.1, y: 0.1}
-  scaleRandomness: 1
+  scale: {x: 0.3, y: 0.3}
+  scaleRandomness: 0
   velocityWeight: 0.01
   velocityTexture: {fileID: 0}
   maxRelativeVelocity: 1
@@ -4281,8 +4281,8 @@ MonoBehaviour:
   rotationRandomness: 1
   scaleWithDistance: 1
   scaleWithTransform: 0
-  scale: {x: 0.1, y: 0.1}
-  scaleRandomness: 1
+  scale: {x: 0.3, y: 0.3}
+  scaleRandomness: 0
   velocityWeight: 0.01
   velocityTexture: {fileID: 0}
   maxRelativeVelocity: 1
@@ -5771,8 +5771,8 @@ MonoBehaviour:
   rotationRandomness: 1
   scaleWithDistance: 1
   scaleWithTransform: 0
-  scale: {x: 0.1, y: 0.1}
-  scaleRandomness: 1
+  scale: {x: 0.3, y: 0.3}
+  scaleRandomness: 0
   velocityWeight: 0.01
   velocityTexture: {fileID: 0}
   maxRelativeVelocity: 1
@@ -6369,8 +6369,8 @@ MonoBehaviour:
   rotationRandomness: 1
   scaleWithDistance: 1
   scaleWithTransform: 0
-  scale: {x: 0.1, y: 0.1}
-  scaleRandomness: 1
+  scale: {x: 0.3, y: 0.3}
+  scaleRandomness: 0
   velocityWeight: 0.01
   velocityTexture: {fileID: 0}
   maxRelativeVelocity: 1
@@ -6784,8 +6784,8 @@ MonoBehaviour:
   rotationRandomness: 1
   scaleWithDistance: 1
   scaleWithTransform: 0
-  scale: {x: 0.1, y: 0.1}
-  scaleRandomness: 1
+  scale: {x: 0.3, y: 0.3}
+  scaleRandomness: 0
   velocityWeight: 0.01
   velocityTexture: {fileID: 0}
   maxRelativeVelocity: 1
