@@ -1,3 +1,4 @@
+using curry.Enums;
 using curry.Localization;
 using curry.Ranking;
 using Cysharp.Threading.Tasks;
@@ -56,18 +57,27 @@ namespace curry.Common
         {
             await SaveLoadManager.Instance.InitializeAsync();
             await LocalizationUtility.InitializeAsync();
+
+            await UniTask.Yield();
+
+            // スクリーン設定
+            var screenMode = UserDataManager.Instance.Option.m_ScreenMode;
+            Screen.fullScreenMode = screenMode == ScreenMode.FullScreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+
 #if DEBUG_MODE
 
             var locale = LocalizationUtility.GetCurrentLocale();
             DebugLogWrapper.Log($"<color=white> Locale {locale} </color>");
 
 #endif
+
             CurryLeaderBoardManager.Create();
             // SteamManager初期化
             await CurryLeaderBoardManager.Instance.Init();
 
             // 指定の言語に合わせる
             LocalizationTextManager.ChangeText();
+
             IsSetup = true;
         }
     }

@@ -6,10 +6,8 @@ using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
 using Fluxy;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
 
 namespace curry.InGame

@@ -24,12 +24,18 @@ namespace curry.UI
         private Toggle[] m_LanguageToggles;
 
         [SerializeField]
+        private Toggle[] m_ScreenModeToggles;
+
+        [SerializeField]
         private Button m_CloseButton;
 
         private OptionData m_OptionData;
 
         private const int kJapaneseToggleIdx = 0;
         private const int kEnglishToggleIdx = 1;
+
+        private const int kWindowedToggleIdx = 0;
+        private const int kFullScreenToggleIdx = 1;
 
         private bool m_IsDirty;
 
@@ -68,6 +74,23 @@ namespace curry.UI
                 else
                 {
                     m_LanguageToggles[i].onValueChanged.AddListener(SetLanguageEnglish);
+                }
+            }
+
+            // ===== Screen Mode Setting =====
+            var isWindowed = m_OptionData.m_ScreenMode == ScreenMode.Window;
+            m_ScreenModeToggles[kWindowedToggleIdx].SetIsOnWithoutNotify(isWindowed);
+            m_ScreenModeToggles[kFullScreenToggleIdx].SetIsOnWithoutNotify(!isWindowed);
+
+            for (var i = 0; i < m_ScreenModeToggles.Length; i++)
+            {
+                if (i == kWindowedToggleIdx)
+                {
+                    m_ScreenModeToggles[i].onValueChanged.AddListener(SetScreenModeWindowed);
+                }
+                else
+                {
+                    m_ScreenModeToggles[i].onValueChanged.AddListener(SetScreenModeFullScreen);
                 }
             }
 
@@ -149,6 +172,32 @@ namespace curry.UI
             }
         }
 
+        private void SetScreenModeWindowed(bool val)
+        {
+            if (!val)
+            {
+                return;
+            }
+
+            SetScreenMode(ScreenMode.Window);
+        }
+
+        private void SetScreenModeFullScreen(bool val)
+        {
+            if (!val)
+            {
+                return;
+            }
+
+            SetScreenMode(ScreenMode.FullScreen);
+        }
+
+        private void SetScreenMode(ScreenMode screenMode)
+        {
+            m_OptionData.m_ScreenMode = screenMode;
+            Screen.fullScreenMode = screenMode == ScreenMode.Window ? FullScreenMode.Windowed : FullScreenMode.FullScreenWindow;
+        }
+
         public void Close()
         {
             SEPlayer.PlaySelectSE();
@@ -158,6 +207,7 @@ namespace curry.UI
         private async UniTask CloseAsync(bool noSave)
         {
             Activate(false);
+            CloseAnimation();
 
             if (!noSave && m_IsDirty)
             {
@@ -170,8 +220,6 @@ namespace curry.UI
             {
                 LocalizationTextManager.ChangeText();
             }
-
-            CloseAnimation();
         }
 
         public void CloseNoSave()

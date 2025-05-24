@@ -108,6 +108,8 @@ namespace curry.Title
 
         private async UniTask InitTask()
         {
+            await UniTask.WaitUntil(() => RuntimeInitialize.IsSetup);
+
             EnvSoundManager.Instance.Player.PlayLoop("env_forest_day");
 
             m_TitleUI.GameStartAction = OnPressGameStart;
