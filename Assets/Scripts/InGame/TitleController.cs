@@ -19,6 +19,7 @@ namespace curry.Title
             ToInGame,
             Leaderboard,
             Setting,
+            Credits,
             Exit,
         }
 
@@ -32,13 +33,17 @@ namespace curry.Title
         [SerializeField]
         private SettingUI m_SettingUI;
         [SerializeField]
+        private CreditsUI m_CreditsUI;
+        [SerializeField]
         private GameController m_GameController;
         [SerializeField]
         private Leaderboard m_Leaderboard;
 
+
         private StateMachine m_StateMachine = new ();
 
         private bool m_IsFirstSetting = true;
+        private bool m_IsFirstCredits = true;
         private bool m_IsFirstLeaderboard = true;
 
         private void Awake()
@@ -46,6 +51,7 @@ namespace curry.Title
             UnityUtility.SetActive(m_UICanvas, true);
             UnityUtility.SetActive(m_SettingUI, false);
             UnityUtility.SetActive(m_Leaderboard, false);
+            UnityUtility.SetActive(m_CreditsUI, false);
             SetState();
         }
 
@@ -59,6 +65,7 @@ namespace curry.Title
             m_StateMachine.AddState((int)State.ToInGame, ToInGameProcess);
             m_StateMachine.AddState((int)State.Leaderboard, LeaderboardProcess);
             m_StateMachine.AddState((int)State.Setting, SettingProcess);
+            m_StateMachine.AddState((int)State.Credits, CreditsProcess);
             m_StateMachine.AddState((int)State.Exit, ExitProcess);
 
             m_StateMachine.NextState((int)State.Init);
@@ -91,6 +98,12 @@ namespace curry.Title
             SettingTask().Forget();
         }
 
+        private void CreditsProcess(StateMachineProcess _)
+        {
+            SEPlayer.PlaySelectSE();
+            CreaditsTask().Forget();
+        }
+
         private void ExitProcess(StateMachineProcess _)
         {
             SEPlayer.PlaySelectSE();
@@ -115,6 +128,7 @@ namespace curry.Title
             m_TitleUI.GameStartAction = OnPressGameStart;
             m_TitleUI.RankingAction = OnPressLeaderboard;
             m_TitleUI.SettingAction = OnPressSetting;
+            m_TitleUI.CreditsAction = OnPressCredits;
             m_TitleUI.ExitAction = OnPressExit;
 
             await UniTask.WaitForSeconds(2.0f);
@@ -153,6 +167,29 @@ namespace curry.Title
 
             m_SettingUI.Setup();
             m_SettingUI.OpenAnimation();
+        }
+
+        private async UniTask CreaditsTask()
+        {
+            UnityUtility.SetActive(m_CreditsUI, true);
+
+            if (m_IsFirstCredits)
+            {
+                m_CreditsUI.OpenedEvent.AddListener(() =>
+                {
+                    m_CreditsUI.Activate(true);
+                });
+
+                m_CreditsUI.ClosedEvent.AddListener(() =>
+                {
+                    UnityUtility.SetActive(m_CreditsUI, false);
+                    m_StateMachine.NextState((int)State.Title);
+                });
+
+                m_IsFirstCredits = false;
+            }
+
+            m_CreditsUI.OpenAnimation();
         }
 
         private async UniTask LeaderboardTask()
@@ -217,6 +254,16 @@ namespace curry.Title
             }
 
             m_StateMachine.NextState((int)State.Setting);
+        }
+
+        private void OnPressCredits()
+        {
+            if (!m_StateMachine.IsState((int)State.Title))
+            {
+                return;
+            }
+
+            m_StateMachine.NextState((int)State.Credits);
         }
 
         private void OnPressExit()

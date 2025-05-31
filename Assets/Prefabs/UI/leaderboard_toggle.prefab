@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6396703095500909487}
   - component: {fileID: 3593660843408264272}
   - component: {fileID: 5411150988214647736}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: submit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3472294170689267544}
   - component: {fileID: 6305034246857841002}
   - component: {fileID: 4912266082549386499}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Global
+  m_text: Frineds
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3776a3a7fb16d0b41af54cf80358baeb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fc42974d43a0dd94da7b2b2456df9d9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -171,9 +171,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TargetTextGUI: {fileID: 6305034246857841002}
   m_TargetText: {fileID: 0}
-  m_Key: Global
+  m_Key: Friends
 --- !u!1 &4292274478770545455
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 7762707207576241988}
   - component: {fileID: 7206413731890754519}
   - component: {fileID: 2863088172089725822}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: leaderboard_toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: curry.leaderboard.Leaderboard, Assembly-CSharp
+        m_MethodName: FriendsToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!222 &7206413731890754519
 CanvasRenderer:

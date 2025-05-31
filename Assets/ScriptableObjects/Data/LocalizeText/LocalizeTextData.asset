@@ -67,3 +67,6 @@ MonoBehaviour:
   - key: Window
     ja: "\u30A6\u30A3\u30F3\u30C9\u30A6"
     en: Windowed
+  - key: Credits
+    ja: "\u30AF\u30EC\u30B8\u30C3\u30C8"
+    en: CREDITS

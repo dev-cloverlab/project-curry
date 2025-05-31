@@ -16,6 +16,7 @@ namespace curry.UI
         public UnityAction GameStartAction { get; set; }
         public UnityAction RankingAction { get; set; }
         public UnityAction SettingAction { get; set; }
+        public UnityAction CreditsAction { get; set; }
         public UnityAction ExitAction { get; set; }
 
         public async UniTask FadeOut()
@@ -39,6 +40,11 @@ namespace curry.UI
         public void OnPressSetting()
         {
             SettingAction?.Invoke();
+        }
+
+        public void OnPressCredits()
+        {
+            CreditsAction?.Invoke();
         }
 
         public void OnPressExit()
