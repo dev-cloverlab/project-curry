@@ -29,7 +29,7 @@ namespace curry.Sound
         }
 
         public const int kSplitMax = 20;
-        public const float kMaxVolume = 0.15f;
+        public const float kMaxVolume = 1f;
         private static float CurrentVolume { get; set; } = kMaxVolume;
         private static List<AudioSource> AudioSources { get; } = new ();
         private static AudioMixer AudioMixer { get; set; }

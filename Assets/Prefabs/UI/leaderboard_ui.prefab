@@ -2425,21 +2425,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2086312783401847242}
     m_Modifications:
-    - target: {fileID: 2137547567335983477, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2436426628140728376, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Name
       value: global_toggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
@@ -2522,48 +2510,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_IsOn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 3434181739941979817}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7983618777866094211}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GlobalToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: curry.leaderboard.Leaderboard, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2594,42 +2550,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2169434750358213184}
     m_Modifications:
-    - target: {fileID: 1474973972295990627, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_fontSize
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474973972295990627, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7983618777866094211}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Close
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: curry.leaderboard.Leaderboard, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3679817518165101383, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
       propertyPath: m_Name
       value: CloseButton
@@ -2732,29 +2656,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2086312783401847242}
     m_Modifications:
-    - target: {fileID: 2137547567335983477, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2436426628140728376, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Name
       value: friends_toggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912266082549386499, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Key
-      value: Friends
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_text
-      value: Frineds
       objectReference: {fileID: 0}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
@@ -2841,45 +2745,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3434181739941979817}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7983618777866094211}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FriendsToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: curry.leaderboard.Leaderboard, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: curry.leaderboard.Leaderboard, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2898,29 +2766,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2086312783401847242}
     m_Modifications:
-    - target: {fileID: 2137547567335983477, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2436426628140728376, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Name
       value: around_user_toggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292274478770545455, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912266082549386499, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_Key
-      value: AroundUser
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: m_text
-      value: AroundUser
       objectReference: {fileID: 0}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
@@ -3007,40 +2855,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3434181739941979817}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7983618777866094211}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AroundUserToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: curry.leaderboard.Leaderboard, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: GlobalToggle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

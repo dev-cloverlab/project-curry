@@ -13,7 +13,7 @@ namespace curry.Sound
     public class BgmManager : SingletonMonoBehaviour<BgmManager>
     {
         public const int SplitMax = 20;
-        public const float MaxVolume = 0.2f;
+        public const float MaxVolume = 1.0f;
 
         [SerializeField]
         protected BgmPlayer m_BgmPlayer;

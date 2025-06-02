@@ -1,5 +1,5 @@
 ﻿/*
- * 出力日 2025/04/29 (火) 17:31:19
+ * 出力日 2025/05/24 (土) 17:45:02
  * 
  * CsvGameSettingImporterEditor.cs から自動出力されるファイルです
  * このファイルは直接編集しないでください
@@ -16,7 +16,7 @@ public static class GameSetting
     /// <summary> お玉の速度下限 </summary>
     public static readonly Protector<float>   AFBqBqiDtCdWeXvD = 0.15f;
     /// <summary> ゲームオーバーまでの時間 </summary>
-    public static readonly Protector<decimal> wiyxJiGVidnUSaqY = 30m;
+    public static readonly Protector<decimal> wiyxJiGVidnUSaqY = 180m;
     /// <summary> 回復速度割合 </summary>
     public static readonly Protector<decimal> qHpCDMzyjVtgsAHu = 0.5m;
     /// <summary> 1日の時間(秒) </summary>
