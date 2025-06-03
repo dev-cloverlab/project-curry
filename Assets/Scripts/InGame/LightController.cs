@@ -1,6 +1,7 @@
 using curry.Sound;
 using curry.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 
 namespace curry.InGame
@@ -32,6 +33,9 @@ namespace curry.InGame
         private float m_Angle;
         private bool m_IsFirstBird = true;
 
+        public UnityAction LightMessageAction { get; set; }
+        public UnityAction LightMessageCloseAction { get; set; }
+
         private void Awake()
         {
             m_DefaultColor = m_SunLight.color;
@@ -52,6 +56,7 @@ namespace curry.InGame
 
             float multipilar;
 
+
             if (m_BeforeAngle >= 120 && m_BeforeAngle <= 240)
             {
                 multipilar = 2f;
@@ -71,7 +76,7 @@ namespace curry.InGame
             var beforeDiff = m_BeforeAngle % 360;
 
             var rotation = m_LightParentTransform.eulerAngles;
-            m_Angle = m_BeforeAngle = rotation.z = kMaxRoatationAngle * ratio;
+            m_Angle = rotation.z = kMaxRoatationAngle * ratio;
 
             var afterDiff = m_Angle % 360;
 
@@ -88,6 +93,11 @@ namespace curry.InGame
                         PlayBird();
                     }
                 }
+            }
+
+            if (m_BeforeAngle < 65 && m_Angle >= 65)
+            {
+                LightMessageAction?.Invoke();
             }
 
             PlayBirdRandom(beforeDiff, afterDiff, 5);
@@ -122,6 +132,8 @@ namespace curry.InGame
             {
                 m_Timer -= GameSetting.XdYpLzQaWmNbVoTc;
             }
+
+            m_BeforeAngle = m_Angle;
         }
 
         private void UpdateIntensity(float angle)
@@ -231,6 +243,7 @@ namespace curry.InGame
             {
                 SEPlayer.PlayLampSwitchSE();
                 UnityUtility.SetActive(m_LampLightObj, !m_LampLightObj.activeSelf);
+                LightMessageCloseAction?.Invoke();
             }
         }
 

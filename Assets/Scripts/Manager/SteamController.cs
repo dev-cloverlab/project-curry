@@ -44,7 +44,7 @@ public static class SteamController
     /// <summary>
     /// ログ出力をやめたい場合はここを弄ってください
     /// </summary>
-    public static bool kEnableLog = true;
+    public static bool kEnableLog = false;
 
     // SteamAPI初期化処理
 #region SteamManagerInitialize

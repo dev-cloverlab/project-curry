@@ -743,6 +743,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5904421650049048982, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
     - target: {fileID: 8939637002525667560, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -949,6 +953,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5904421650049048982, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
     - target: {fileID: 8939637002525667560, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1155,6 +1163,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5904421650049048982, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
     - target: {fileID: 8939637002525667560, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1361,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5904421650049048982, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
     - target: {fileID: 8939637002525667560, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1523,6 +1539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: game_start_button
       objectReference: {fileID: 0}
+    - target: {fileID: 5904421650049048982, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e139e478c8a6a241ad236957480223c, type: 2}
     - target: {fileID: 8939637002525667560, guid: 9f558cea1fff07d49bbf85e58e06491a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

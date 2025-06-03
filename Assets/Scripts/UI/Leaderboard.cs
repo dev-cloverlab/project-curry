@@ -26,7 +26,17 @@ namespace curry.leaderboard
         [SerializeField]
         private Toggle m_GlobalToggle;
 
+        [SerializeField]
+        private Button m_CloseButton;
+
         private SteamController.LeaderboardRequestType m_CurrentType;
+
+        private void Awake()
+        {
+            // ===== Button Event =====
+            m_CloseButton.onClick.RemoveAllListeners();
+            m_CloseButton.onClick.AddListener(Close);
+        }
 
         public void Setup(List<SteamLeaderboardData> globalDataList,
             List<SteamLeaderboardData> aroundUserDataList,
@@ -34,7 +44,7 @@ namespace curry.leaderboard
         {
 
 
-            #if DEBUG_MODE
+           #if DEBUG_MODE
 
             if (false)
             {

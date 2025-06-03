@@ -4,6 +4,7 @@ using curry.UI;
 using curry.Utilities;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +35,12 @@ namespace curry.InGame
         [SerializeField]
         private ButtonHoverDetector m_SettingButtonHoverDetector;
 
+        [SerializeField]
+        private Animator m_LightMessageAnimator;
+
         public UnityAction OnClickSetting { get; set; }
+
+        private static readonly int kCloseLightMessage = Animator.StringToHash("Close");
 
         public void Init()
         {
@@ -43,6 +49,7 @@ namespace curry.InGame
             SetScore(0);
             SetActiveClickObject(false);
             SetScoreCanvasGroupAlpha(false, -1.0f);
+            UnityUtility.SetActive(m_LightMessageAnimator, false);
         }
 
         public void SetActiveClickObject(bool active)
@@ -89,6 +96,18 @@ namespace curry.InGame
         public bool IsSettingButtonHover()
         {
             return m_SettingButtonHoverDetector.IsMouseOver();
+        }
+
+        public async UniTask SetActiveLightMessage(bool active)
+        {
+            if (active)
+            {
+                UnityUtility.SetActive(m_LightMessageAnimator, true);
+            }
+            else
+            {
+                m_LightMessageAnimator.PlayImmediate(kCloseLightMessage);
+            }
         }
     }
 }

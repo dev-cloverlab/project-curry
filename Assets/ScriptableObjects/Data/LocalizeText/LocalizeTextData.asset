@@ -70,3 +70,6 @@ MonoBehaviour:
   - key: Credits
     ja: "\u30AF\u30EC\u30B8\u30C3\u30C8"
     en: CREDITS
+  - key: LightMessage
+    ja: "Space\u30AD\u30FC\u3092\u62BC\u3059\u3068\u30E9\u30A4\u30C8\u304C\u70B9\u304D\u307E\u3059"
+    en: Press [Space] to turn on the light

@@ -81,6 +81,8 @@ namespace curry.InGame
         private Material m_CurryMat;
         private Color m_CurryColor = new (1.0f, 1.0f, 1.0f, 1.0f);
         private ParticleSystem.MainModule m_SteamParticleMain;
+        private bool m_DisplayLightMessage;
+        private bool m_ClosedLightMessage;
 
         private const float kBubbleForceNone = 0f;
         private const float kBubbleForceMin = 0.1f;
@@ -110,6 +112,34 @@ namespace curry.InGame
             SetState();
 
             m_RadiusSqr = LadleRadius * LadleRadius;
+            m_DisplayLightMessage = false;
+            m_ClosedLightMessage = false;
+            m_LightController.LightMessageAction = DisplayLightMessage;
+            m_LightController.LightMessageCloseAction = CloseLightMessage;
+        }
+
+        private void DisplayLightMessage()
+        {
+            if (m_DisplayLightMessage)
+            {
+                return;
+            }
+
+            m_InGameUI.SetActiveLightMessage(true).Forget();
+
+            m_DisplayLightMessage = true;
+        }
+
+        private void CloseLightMessage()
+        {
+            if (!m_DisplayLightMessage || m_ClosedLightMessage)
+            {
+                return;
+            }
+
+            m_InGameUI.SetActiveLightMessage(false).Forget();
+
+            m_ClosedLightMessage = true;
         }
 
         private void OnDestroy()

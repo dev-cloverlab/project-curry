@@ -1280,6 +1280,7 @@ MonoBehaviour:
   m_FriendsView: {fileID: 1711295922567023251}
   m_CellPrefab: {fileID: 5719393634397693820, guid: 18050c108503a9f4ab90134775dc77d7, type: 3}
   m_GlobalToggle: {fileID: 7636354524555096417}
+  m_CloseButton: {fileID: 1844609573296109033}
 --- !u!114 &5892598670431426138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,7 +2103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7529412}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8784314}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2243,8 +2244,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ranking
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3776a3a7fb16d0b41af54cf80358baeb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fc42974d43a0dd94da7b2b2456df9d9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
+  m_sharedMaterial: {fileID: 7755763439999302342, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2429,6 +2430,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: global_toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 4912266082549386499, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_Key
+      value: Global
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_text
+      value: Global
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7755763439999302342, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2643,6 +2656,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
+--- !u!114 &1844609573296109033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2287759997682755508, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
+  m_PrefabInstance: {fileID: 443216688903869021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4078949388185502541 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4520991571557732624, guid: 15282d0070d2e4a4ebf37405b970e89c, type: 3}
@@ -2660,6 +2684,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: friends_toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_text
+      value: Friends
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7755763439999302342, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2770,6 +2802,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: around_user_toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 4912266082549386499, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_Key
+      value: AroundUser
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_text
+      value: AroundUser
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305034246857841002, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7755763439999302342, guid: 3609ba2a3b85d0a4e9ea35bb4537a343, type: 2}
     - target: {fileID: 6328468306767416241, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2860,7 +2904,7 @@ PrefabInstance:
       objectReference: {fileID: 7983618777866094211}
     - target: {fileID: 7762707207576241988, guid: 315d01b68022f4042a173a7a8cd307d7, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GlobalToggle
+      value: AroundUserToggle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
