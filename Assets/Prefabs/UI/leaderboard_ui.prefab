@@ -2327,7 +2327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TargetTextGUI: {fileID: 8504831763771006463}
   m_TargetText: {fileID: 0}
-  m_Key: Global
+  m_Key: Ranking
 --- !u!1 &9221693188439829312
 GameObject:
   m_ObjectHideFlags: 0

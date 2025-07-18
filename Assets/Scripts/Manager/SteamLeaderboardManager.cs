@@ -10,7 +10,7 @@ namespace curry.Ranking
     public class CurryLeaderBoardManager : SingletonMonoBehaviour<CurryLeaderBoardManager>
     {
         // スコアランキング用
-        public const string kLeaderboardScoreRankingName = "curry_leaderboard_7";
+        public const string kLeaderboardScoreRankingName = "curry_leaderboard_8";
 
         private const int kGlobalRangeStart = 0;
         private const int kGlobalRangeEnd = 20;

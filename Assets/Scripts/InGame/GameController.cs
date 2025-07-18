@@ -87,6 +87,9 @@ namespace curry.InGame
         private const float kBubbleForceNone = 0f;
         private const float kBubbleForceMin = 0.1f;
         private const float kBubbleForceMax = 1.2f;
+        // float m_FpsDeltaTime = 0.0f;
+        // float m_FpsDisplay = 0.0f;
+        // float m_FpsTimer = 0.0f;
 
         private void Awake()
         {
@@ -254,6 +257,14 @@ namespace curry.InGame
 
         private void Update()
         {
+            // m_FpsDeltaTime += (Time.unscaledDeltaTime - m_FpsDeltaTime) * 0.1f;
+            // m_FpsTimer += Time.unscaledDeltaTime;
+            // if (m_FpsTimer >= 0.5f)
+            // {
+            //     m_FpsDisplay = 1.0f / m_FpsDeltaTime;
+            //     m_FpsTimer = 0.0f;
+            // }
+
             if (m_StateMachine.IsState((int)State.GameOver))
             {
                 if (Input.GetMouseButtonDown(0) ||
@@ -520,5 +531,11 @@ namespace curry.InGame
                 bubble.scale.y = scale;
             }
         }
+
+        //
+        // void OnGUI()
+        // {
+        //     GUI.Label(new Rect(10, 10, 100, 20), "FPS: " + m_FpsDisplay.ToString("F2"));
+        // }
     }
 }
